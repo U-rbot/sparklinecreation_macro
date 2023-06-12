@@ -107,6 +107,122 @@ Sub ApplyBackgroundCellColor(ws As Worksheet)
     Next cell
 End Sub
 
+Sub ApplyBackgroundCellColor1(ws As Worksheet)
+    Dim lastRow As Long
+    Dim rng As Range
+    Dim cell As Range
+    
+    ' Get the last used row in column A
+    lastRow = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row
+    
+    ' Loop through each row
+    For Each cell In ws.Range("A2:A" & lastRow)
+        If InStr(1, cell.Value, "attendance", vbTextCompare) > 0 Then
+            ' Check the conditions for applying formatting to columns C, D, and E
+            Dim conditionC As Boolean, conditionD As Boolean, conditionE As Boolean
+            conditionC = (cell.Offset(0, 2).Value >= 0.8)
+            conditionD = (cell.Offset(0, 3).Value >= 0.8)
+            conditionE = (cell.Offset(0, 4).Value >= 0.8)
+            
+            ' Apply formatting to columns C based on the condition
+            Set rng = ws.Range("C" & cell.Row)
+            rng.Interior.Color = IIf(conditionC, RGB(198, 239, 206), RGB(255, 199, 206))
+            
+            ' Apply formatting to columns D based on the condition
+            Set rng = ws.Range("D" & cell.Row)
+            rng.Interior.Color = IIf(conditionD, RGB(198, 239, 206), RGB(255, 199, 206))
+            
+            ' Apply formatting to columns E based on the condition
+            Set rng = ws.Range("E" & cell.Row)
+            rng.Interior.Color = IIf(conditionE, RGB(198, 239, 206), RGB(255, 199, 206))
+        
+        ElseIf InStr(1, cell.Value, "engage", vbTextCompare) > 0 Then
+            ' Check the conditions for applying formatting to columns C, D, and E
+            Dim conditionC1 As Boolean, conditionD1 As Boolean, conditionE1 As Boolean
+            conditionC1 = (cell.Offset(0, 2).Value >= 0.95)
+            conditionD1 = (cell.Offset(0, 3).Value >= 0.95)
+            conditionE1 = (cell.Offset(0, 4).Value >= 0.95)
+            
+            ' Apply formatting to columns C based on the condition
+            Set rng = ws.Range("C" & cell.Row)
+            rng.Interior.Color = IIf(conditionC1, RGB(198, 239, 206), RGB(255, 199, 206))
+            
+            ' Apply formatting to columns D based on the condition
+            Set rng = ws.Range("D" & cell.Row)
+            rng.Interior.Color = IIf(conditionD1, RGB(198, 239, 206), RGB(255, 199, 206))
+            
+            ' Apply formatting to columns E based on the condition
+            Set rng = ws.Range("E" & cell.Row)
+            rng.Interior.Color = IIf(conditionE1, RGB(198, 239, 206), RGB(255, 199, 206))
+                ElseIf InStr(1, cell.Value, "attrition", vbTextCompare) > 0 Then
+            ' Check the conditions for applying formatting to columns C, D, and E
+            Dim conditionC2 As Boolean, conditionD2 As Boolean, conditionE2 As Boolean
+            conditionC2 = (cell.Offset(0, 2).Value < 0.03)
+            conditionD2 = (cell.Offset(0, 3).Value < 0.03)
+            conditionE2 = (cell.Offset(0, 4).Value < 0.03)
+            
+            ' Apply formatting to columns C based on the condition
+            Set rng = ws.Range("C" & cell.Row)
+            rng.Interior.Color = IIf(conditionC2, RGB(198, 239, 206), RGB(255, 199, 206))
+            
+            ' Apply formatting to columns D based on the condition
+            Set rng = ws.Range("D" & cell.Row)
+            rng.Interior.Color = IIf(conditionD2, RGB(198, 239, 206), RGB(255, 199, 206))
+            
+            ' Apply formatting to columns E based on the condition
+            Set rng = ws.Range("E" & cell.Row)
+            rng.Interior.Color = IIf(conditionE2, RGB(198, 239, 206), RGB(255, 199, 206))
+        
+        ElseIf InStr(1, cell.Value, "Overall NHE Completion", vbTextCompare) > 0 Then
+            ' Check the conditions for applying formatting to columns C, D, and E
+            Dim conditionC3 As Boolean, conditionD3 As Boolean, conditionE3 As Boolean
+            conditionC3 = (cell.Offset(0, 2).Value > 0.95)
+            conditionD3 = (cell.Offset(0, 3).Value > 0.95)
+            conditionE3 = (cell.Offset(0, 4).Value > 0.95)
+            
+            ' Apply formatting to columns C based on the condition
+            Set rng = ws.Range("C" & cell.Row)
+            rng.Interior.Color = IIf(conditionC3, RGB(198, 239, 206), RGB(255, 199, 206))
+            
+            ' Apply formatting to columns D based on the condition
+            Set rng = ws.Range("D" & cell.Row)
+            rng.Interior.Color = IIf(conditionD3, RGB(198, 239, 206), RGB(255, 199, 206))
+            
+            ' Apply formatting to columns E based on the condition
+            Set rng = ws.Range("E" & cell.Row)
+            rng.Interior.Color = IIf(conditionE3, RGB(198, 239, 206), RGB(255, 199, 206))
+        
+        ElseIf InStr(1, cell.Value, "VOA SLA", vbTextCompare) > 0 Then
+            ' Check the conditions for applying formatting to columns C, D, and E
+            Dim conditionC4 As Boolean, conditionD4 As Boolean, conditionE4 As Boolean
+            conditionC4 = (cell.Offset(0, 2).Value > 0.98)
+            conditionD4 = (cell.Offset(0, 3).Value > 0.98)
+            conditionE4 = (cell.Offset(0, 4).Value > 0.98)
+            
+            ' Apply formatting to columns C based on the condition
+            Set rng = ws.Range("C" & cell.Row)
+            rng.Interior.Color = IIf(conditionC4, RGB(198, 239, 206), RGB(255, 199, 206))
+            
+            ' Apply formatting to columns D based on the condition
+            Set rng = ws.Range("D" & cell.Row)
+            rng.Interior.Color = IIf(conditionD4, RGB(198, 239, 206), RGB(255, 199, 206))
+            
+            ' Apply formatting to columns E based on the condition
+            Set rng = ws.Range("E" & cell.Row)
+            rng.Interior.Color = IIf(conditionE4, RGB(198, 239, 206), RGB(255, 199, 206))
+        End If
+    Next cell
+End Sub
+
+
+
+
+
+
+
+
+
+
 Sub ApplyAllBorders(ws As Worksheet)
     Dim lastRow As Long
     Dim rng As Range
@@ -121,6 +237,22 @@ Sub ApplyAllBorders(ws As Worksheet)
         .ColorIndex = 0
         .TintAndShade = 0
         .Weight = xlThin
+    End With
+    'coloring 1st row
+    Set kpiRange = ws.Range("A1:G1")
+    With kpiRange
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlBottom
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+        .Interior.Color = RGB(48, 84, 150) ' Sky Blue
+        .Font.Color = RGB(255, 255, 255) ' White
+        .Font.Bold = True
     End With
     
     ' Insert a new row at the beginning and format it
@@ -164,6 +296,7 @@ Sub ApplyAllBorders(ws As Worksheet)
 End Sub
 
 
+
 Sub FormatDataInFolder()
     Dim sourceFolderPath As String
     Dim destinationFolderPath As String
@@ -188,8 +321,8 @@ Sub FormatDataInFolder()
         For Each ws In wb.Sheets
             ' Perform the data cleaning and formatting on each sheet
             CleanUpDataAndCreateSparkline ws
+            ApplyBackgroundCellColor1 ws
             ApplyBackgroundCellColor ws
-            
             ApplyAllBorders ws
             MergeSameCells ws
         Next ws
